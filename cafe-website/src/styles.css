@@ -1,0 +1,88 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* Cafe design system: warm browns, cream, sage green accent */
+@theme inline {
+  --font-display: "Fraunces", Georgia, serif;
+  --font-sans: "DM Sans", system-ui, sans-serif;
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-espresso: var(--espresso);
+  --color-cream: var(--cream);
+  --color-star: var(--star);
+}
+
+:root {
+  --radius: 0.875rem;
+  --background: oklch(0.97 0.018 80);
+  --foreground: oklch(0.25 0.035 50);
+  --card: oklch(0.99 0.01 80);
+  --card-foreground: oklch(0.25 0.035 50);
+  --popover: oklch(0.99 0.01 80);
+  --popover-foreground: oklch(0.25 0.035 50);
+  --primary: oklch(0.42 0.07 50);
+  --primary-foreground: oklch(0.97 0.018 80);
+  --secondary: oklch(0.92 0.03 75);
+  --secondary-foreground: oklch(0.3 0.04 50);
+  --muted: oklch(0.93 0.022 78);
+  --muted-foreground: oklch(0.45 0.03 55);
+  --accent: oklch(0.5 0.08 145);
+  --accent-foreground: oklch(0.98 0.01 120);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.98 0 0);
+  --border: oklch(0.87 0.03 72);
+  --input: oklch(0.87 0.03 72);
+  --ring: oklch(0.5 0.08 145);
+  --espresso: oklch(0.22 0.03 45);
+  --cream: oklch(0.96 0.025 82);
+  --star: oklch(0.75 0.15 75);
+}
+
+@layer base {
+  * { border-color: var(--color-border); }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+  }
+  h1, h2, h3 { font-family: var(--font-display); }
+}
+
+/* Reusable button styles */
+@utility btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
+  border-radius: 999px; padding: .75rem 1.5rem; font-weight: 600; font-size: .95rem;
+  transition: transform .2s, background-color .2s, box-shadow .2s;
+  &:hover { transform: translateY(-2px); }
+}
+@utility btn-primary { background: var(--primary); color: var(--primary-foreground); &:hover { box-shadow: 0 10px 24px -10px var(--primary); } }
+@utility btn-accent { background: var(--accent); color: var(--accent-foreground); &:hover { box-shadow: 0 10px 24px -10px var(--accent); } }
+@utility btn-ghost { border: 1.5px solid var(--cream); color: var(--cream); &:hover { background: var(--cream); color: var(--espresso); } }
+@utility btn-outline { border: 1.5px solid var(--primary); color: var(--primary); &:hover { background: var(--primary); color: var(--primary-foreground); } }
+@utility card-lift { transition: transform .3s, box-shadow .3s; &:hover { transform: translateY(-4px); box-shadow: 0 20px 40px -20px oklch(0.3 0.05 50 / .35); } }
+@utility hero-overlay { background: linear-gradient(180deg, oklch(0.2 0.03 45 / .35), oklch(0.18 0.03 45 / .8)); }
